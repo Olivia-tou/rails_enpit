@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.1.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: GbRcb/7UTYOvggu0MJdcjUvwuZslfdpJBHuh9T11nM66Zyu1z/0P0LfxjBfRhsExkdUcLeMaM/XEuUlKnQ9ryhm6kKbmmSmsYrzqptV9rCuVBsmD9Febrlv6YtuQ5Rel+tKoAQ3WViLYqCrM7S/Sn5YCLIh9CFVj9RzXB+Jakng=
+  app: pure-hamlet-2294
+  on:
+    repo: Olivia-tou/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
